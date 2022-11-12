@@ -85,6 +85,49 @@ int Puntuacion(int iaMano[], const int ContadorCartas) {
 	return Puntaje;
 }
 
+int Probabilidad(int Puntaje){
+	if (Puntaje < 12){
+		cout << "Posibilidad de pasarse de 21 al pedir es: 00%"<<endl;
+	}else{
+		switch (Puntaje){
+		case 12:
+			cout << "Posibilidad de pasarse de 21 al pedir es: 31%"<<endl;
+			break;
+		case 13:
+			cout << "Posibilidad de pasarse de 21 al pedir es: 39%"<<endl;
+			break;
+		case 14:
+			cout << "Posibilidad de pasarse de 21 al pedir es: 56%"<<endl;
+			break;
+		case 15:
+			cout << "Posibilidad de pasarse de 21 al pedir es: 58%"<<endl;
+			break;
+		case 16:
+			cout << "Posibilidad de pasarse de 21 al pedir es: 62%"<<endl;
+			break;
+		case 17:
+			cout << "Posibilidad de pasarse de 21 al pedir es: 69%"<<endl;
+			break;
+		case 18:
+			cout << "Posibilidad de pasarse de 21 al pedir es: 77%"<<endl;
+			break;
+		case 19:
+			cout << "Posibilidad de pasarse de 21 al pedir es: 85%"<<endl;
+			break;
+		case 20:
+			cout << "Posibilidad de pasarse de 21 al pedir es: 92%"<<endl;
+			break;
+		case 21:
+			cout << "Posibilidad de pasarse de 21 al pedir es: 100%"<<endl;
+			break;
+		}
+	}
+	int LimitePuntos = 21;
+	cout << "Posibilidad de ganar: ";
+	float Porcentaje= ((Puntaje*100)/LimitePuntos);
+	return Porcentaje;
+}
+
 void ImprimirEnConsola(int ManoCasa[], const int PuntajeCasa, int ManoJugador[], const int PuntajeJugador) {
 
 	cout << "Mano de la Casa: Puntos = " << Puntuacion(ManoCasa, PuntajeCasa) << endl;
@@ -135,6 +178,7 @@ int main() {
 			ImprimirCarta(ManoCasa[1]);
 			cout << endl;
 			cout << "Mano del Jugador: Puntos = " << Puntuacion(ManoJugador, CartasJugador) << endl;
+			cout << Probabilidad(Puntuacion(ManoJugador, CartasJugador)) << "%" << endl;
 			ImprimirMano(ManoJugador, CartasJugador);
 
 			// Pregúnta al jugador si quiere un seguir o quedarse.
@@ -146,7 +190,7 @@ int main() {
 			} else if (Eleccion == 'q') {
 				Peticion = false;
 			} else {
-				cout << "Error: ¡Intenta nuevamente!" << endl;
+				cout << "Error: !Intenta nuevamente!" << endl;
 			}
 			cout << endl;
 			// Obtenga la puntuación actual del jugador para actualizar y comprobar si se ha pasado.
