@@ -65,7 +65,7 @@ int SiguienteCarta(bool CartasRepartidas[]) {
 int Puntuacion(int iaMano[], const int ContadorCartas) {
 
 	int AsValor	= 0;
-	int Puntaje		= 0;
+	int Puntaje	= 0;
 	for (int IdCarta = 0; IdCarta < ContadorCartas; ++IdCarta) {
 		const int CartaSaliente = iaMano[IdCarta];
 		const int Rango = (CartaSaliente % 13);
@@ -87,9 +87,9 @@ int Puntuacion(int iaMano[], const int ContadorCartas) {
 
 void ImprimirEnConsola(int ManoCasa[], const int PuntajeCasa, int ManoJugador[], const int PuntajeJugador) {
 
-	cout << "Mano de la Casa: Score = " << Puntuacion(ManoCasa, PuntajeCasa) << endl;
+	cout << "Mano de la Casa: Puntos = " << Puntuacion(ManoCasa, PuntajeCasa) << endl;
 	ImprimirMano(ManoCasa, PuntajeCasa);
-	cout << "Mano del Jugador: Score = " << Puntuacion(ManoJugador, PuntajeJugador) << endl;
+	cout << "Mano del Jugador: Puntos = " << Puntuacion(ManoJugador, PuntajeJugador) << endl;
 	ImprimirMano(ManoJugador, PuntajeJugador);
 	cout << endl;
 }
@@ -134,7 +134,7 @@ int main() {
 			cout << "** ";
 			ImprimirCarta(ManoCasa[1]);
 			cout << endl;
-			cout << "Mano del Jugador: Score = " << Puntuacion(ManoJugador, CartasJugador) << endl;
+			cout << "Mano del Jugador: Puntos = " << Puntuacion(ManoJugador, CartasJugador) << endl;
 			ImprimirMano(ManoJugador, CartasJugador);
 
 			// Pregúnta al jugador si quiere un seguir o quedarse.
