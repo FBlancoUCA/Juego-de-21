@@ -86,46 +86,22 @@ int Puntuacion(int iaMano[], const int ContadorCartas) {
 }
 
 int Probabilidad(int Puntaje){
-	if (Puntaje < 12){
-		cout << "Posibilidad de pasarse de 21 al pedir es: 00%"<<endl;
-	}else{
-		switch (Puntaje){
-		case 12:
-			cout << "Posibilidad de pasarse de 21 al pedir es: 31%"<<endl;
-			break;
-		case 13:
-			cout << "Posibilidad de pasarse de 21 al pedir es: 39%"<<endl;
-			break;
-		case 14:
-			cout << "Posibilidad de pasarse de 21 al pedir es: 56%"<<endl;
-			break;
-		case 15:
-			cout << "Posibilidad de pasarse de 21 al pedir es: 58%"<<endl;
-			break;
-		case 16:
-			cout << "Posibilidad de pasarse de 21 al pedir es: 62%"<<endl;
-			break;
-		case 17:
-			cout << "Posibilidad de pasarse de 21 al pedir es: 69%"<<endl;
-			break;
-		case 18:
-			cout << "Posibilidad de pasarse de 21 al pedir es: 77%"<<endl;
-			break;
-		case 19:
-			cout << "Posibilidad de pasarse de 21 al pedir es: 85%"<<endl;
-			break;
-		case 20:
-			cout << "Posibilidad de pasarse de 21 al pedir es: 92%"<<endl;
-			break;
-		case 21:
-			cout << "Posibilidad de pasarse de 21 al pedir es: 100%"<<endl;
-			break;
-		}
-	}
-	int LimitePuntos = 21;
-	cout << "Posibilidad de ganar: ";
-	float Porcentaje= ((Puntaje*100)/LimitePuntos);
-	return Porcentaje;
+	int s = 1;
+	int n = 1;
+	float pro = 0;
+	if (Puntaje>11){
+        for (int i = 1; i<13; i++){
+            int suma = 0;
+            suma = Puntaje + s;            
+            if (suma>21){
+                n++;
+            }
+            s++;
+        }
+        n = n*100;
+        float pro = (n/13);
+        cout<<"Promedio de pasarse de 21: : "<<pro<<"%"<<endl;
+    }
 }
 
 void ImprimirEnConsola(int ManoCasa[], const int PuntajeCasa, int ManoJugador[], const int PuntajeJugador) {
@@ -158,8 +134,7 @@ int main() {
 		ManoJugador[0]	= SiguienteCarta(CartasRepartidas);
 		ManoCasa[0]		= SiguienteCarta(CartasRepartidas);
 		ManoJugador[1]	= SiguienteCarta(CartasRepartidas);
-		ManoCasa[1]		= SiguienteCarta(CartasRepartidas);
-		CartasCasa		= 2;
+		CartasCasa		= 1;
 		CartasJugador	= 2;
 
 		// Señale una nueva mano.
@@ -173,9 +148,10 @@ int main() {
 		// Obtenga la decision del jugador. Calcule la puntuación y vuelva a mostrar después de cada eleccion.
 		do {
 			// Imprime las cartas repartidas, pero solo la segunda carta de la Casa.
-			cout << "Mano de la Casa" << endl;
-			cout << "** ";
-			ImprimirCarta(ManoCasa[1]);
+			cout << "Mano de la Casa: Puntos = " << Puntuacion(ManoCasa, CartasCasa) << endl;
+			cout << Probabilidad(Puntuacion(ManoCasa, CartasCasa)) << "%" << endl;
+			ImprimirCarta(ManoCasa[0]);
+			cout << " **";
 			cout << endl;
 			cout << "Mano del Jugador: Puntos = " << Puntuacion(ManoJugador, CartasJugador) << endl;
 			cout << Probabilidad(Puntuacion(ManoJugador, CartasJugador)) << "%" << endl;
