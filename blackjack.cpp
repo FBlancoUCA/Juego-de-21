@@ -100,7 +100,8 @@ int Probabilidad(int Puntaje){
         }
         n = n*100;
         float pro = (n/13);
-        cout<<"Promedio de pasarse de 21: : "<<pro<<"%"<<endl;
+        cout<<"Promedio de pasarse de 21: : ";
+		return pro;
     }
 }
 
@@ -149,12 +150,12 @@ int main() {
 		do {
 			// Imprime las cartas repartidas, pero solo la segunda carta de la Casa.
 			cout << "Mano de la Casa: Puntos = " << Puntuacion(ManoCasa, CartasCasa) << endl;
-			cout << Probabilidad(Puntuacion(ManoCasa, CartasCasa)) << "%" << endl;
+			cout << Probabilidad(Puntuacion(ManoCasa, CartasCasa)) <<endl;
 			ImprimirCarta(ManoCasa[0]);
 			cout << " **";
 			cout << endl;
 			cout << "Mano del Jugador: Puntos = " << Puntuacion(ManoJugador, CartasJugador) << endl;
-			cout << Probabilidad(Puntuacion(ManoJugador, CartasJugador)) << "%" << endl;
+			cout << Probabilidad(Puntuacion(ManoJugador, CartasJugador)) << "%" <<endl;
 			ImprimirMano(ManoJugador, CartasJugador);
 
 			// Pregúnta al jugador si quiere un seguir o quedarse.
