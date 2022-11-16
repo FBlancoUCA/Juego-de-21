@@ -85,6 +85,27 @@ int Puntuacion(int iaMano[], const int ContadorCartas) {
 	return Puntaje;
 }
 
+int Repeticion(int iaMano[], const int ContadorCartas){
+
+	int AsValor	= 0;
+	int Posibilidad	= 0;
+	int Cartas = 0;
+	for (int IdCarta = 0; IdCarta < ContadorCartas; ++IdCarta) {
+		const int CartaSaliente = iaMano[IdCarta];
+		const int Rango = (CartaSaliente % 13);
+		cout<<"Carta: "<<Rango<<endl;
+		if (Rango < 8) {
+			Cartas = Cartas + 4;
+		} else 
+			Cartas = Cartas + 16;
+	
+	}
+	int Mano = Cartas * 100;
+	Posibilidad = Mano/1326;
+	cout<<"Posibilidad de conseguir una mano igual en valores: ";
+	return Posibilidad;
+}
+
 int Probabilidad(int Puntaje){
 	int s = 1;
 	int n = 1;
@@ -150,11 +171,11 @@ int main() {
 		do {
 			// Imprime las cartas repartidas, pero solo la segunda carta de la Casa.
 			cout << "Mano de la Casa: Puntos = " << Puntuacion(ManoCasa, CartasCasa) << endl;
-			cout << Probabilidad(Puntuacion(ManoCasa, CartasCasa)) <<endl;
 			ImprimirCarta(ManoCasa[0]);
 			cout << " **";
 			cout << endl;
 			cout << "Mano del Jugador: Puntos = " << Puntuacion(ManoJugador, CartasJugador) << endl;
+			cout << Repeticion(ManoJugador, CartasJugador) << "%" <<endl;
 			cout << Probabilidad(Puntuacion(ManoJugador, CartasJugador)) << "%" <<endl;
 			ImprimirMano(ManoJugador, CartasJugador);
 
