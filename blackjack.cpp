@@ -93,15 +93,18 @@ int Repeticion(int iaMano[], const int ContadorCartas){
 	for (int IdCarta = 0; IdCarta < ContadorCartas; ++IdCarta) {
 		const int CartaSaliente = iaMano[IdCarta];
 		const int Rango = (CartaSaliente % 13);
-		cout<<"Carta: "<<Rango<<endl;
 		if (Rango < 8) {
-			Cartas = Cartas + 4;
+			Cartas = Cartas + 8;
 		} else 
-			Cartas = Cartas + 16;
+			Cartas = Cartas + 8;
 	
 	}
+	if (ContadorCartas==2){
 	int Mano = Cartas * 100;
 	Posibilidad = Mano/1326;
+	cout<<"Posibilidad de conseguir una mano igual en valores: ";
+	return Posibilidad;
+	} else
 	cout<<"Posibilidad de conseguir una mano igual en valores: ";
 	return Posibilidad;
 }
@@ -121,9 +124,11 @@ int Probabilidad(int Puntaje){
         }
         n = n*100;
         float pro = (n/13);
-        cout<<"Promedio de pasarse de 21: : ";
+        cout<<"Promedio de pasarse de 21: ";
 		return pro;
-    }
+    }else
+	cout<<"Promedio de pasarse de 21: ";
+	return pro;
 }
 
 void ImprimirEnConsola(int ManoCasa[], const int PuntajeCasa, int ManoJugador[], const int PuntajeJugador) {
